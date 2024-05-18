@@ -1,19 +1,24 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { Questions } from './Questions';
-
+import {useSelector} from "react-redux"
 export const Quiz = () => {
+  
   const [check, setChecked] = useState(undefined)
+  const state=useSelector(state=> state)
+
+  useEffect(()=>{
+console.log(state)
+  })
+
   function onNext(){
     console.log("next");
   }
-
   function onPrev(){
     console.log("prev");
   }
   return (
     <div className='container'>
         <h1 className='title text-light'>Quiz Application</h1>
-
         {/* display questions */}
         {/* <Questions onChecked={onChecked} /> */}
          <Questions/>
