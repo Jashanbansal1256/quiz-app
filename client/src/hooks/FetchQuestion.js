@@ -12,7 +12,9 @@ export const useFetchQuestion = () => {
     serverError: null,
   });
   useEffect(() => {
-    setGetData((prev) => ({ ...prev, isLoading: true }))(async () => {
+    // setGetData((prev) => ({ ...prev, isLoading: true }))
+    
+    (async () => {
       try {
         let question = await data;
         if (question.length > 0) {

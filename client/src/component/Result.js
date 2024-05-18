@@ -6,7 +6,7 @@ import { ResultTable } from "./ResultTable";
 export const Result = () => {
 
   function onRestart(){
-    console.log("restart")
+    // console.log("restart")
   }
   return (
     <div className="container">
