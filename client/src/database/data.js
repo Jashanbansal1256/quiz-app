@@ -1,4 +1,4 @@
-export default [
+const quizData = [
     {
         id: 1,
         question: "JavaScript is an _______ language",
@@ -51,4 +51,4 @@ export default [
     }
 ];
 
-// export const answers = [0, 1, 2, 1, 0];
+export default quizData;
