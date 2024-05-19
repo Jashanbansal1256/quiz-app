@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { moveNextQuestion, movePrevQuestion } from "../hooks/FetchQuestion";
 import { PushAnswer } from "../hooks/setResult";
 import {Navigate} from "react-router-dom"
-
 export const Quiz = () => {
   const [check, setChecked] = useState(undefined)
   const result = useSelector((state) => state.result.result);
@@ -15,6 +14,7 @@ export const Quiz = () => {
   });
 
   function onNext() {
+    // -1
     if (trace < queue.length) {
 
       dispatch(moveNextQuestion());
@@ -42,14 +42,12 @@ export const Quiz = () => {
   return (
     <div className="container">
       <h1 className="title text-light">Quiz Application</h1>
-
       {/* display questions */}
       {/* <Questions onChecked={onChecked} /> */}
       <Questions onChecked={onChecked} />
       <div className="grid">
-      { trace > 0 ? <button className='btn prev' onClick={onPrev}>Prev</button> : <div></div>}        <button className="btn prev" onClick={onPrev}>
-          Prev
-        </button>
+        { trace > 0 ? <button className='btn prev' onClick={onPrev}>Prev</button> : <div></div>}
+
         <button className="btn next" onClick={onNext}>
           Next
         </button>
