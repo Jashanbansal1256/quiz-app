@@ -7,8 +7,11 @@ import { updateResult } from "../hooks/setResult";
 export const Questions = ({ onChecked }) => {
   const [checked, setChecked] = useState(undefined);
   const { trace } = useSelector((state) => state.questions);
+  const result = useSelector((state) => state.result.result);
   const [{ isLoading, apiData, serverError }] = useFetchQuestion();
   // const question=data[0];
+
+  // useSelector(state=> console.log(state))
 
   const questions = useSelector(
     (state) => state.questions.queue[state.questions.trace]
@@ -21,6 +24,7 @@ export const Questions = ({ onChecked }) => {
   function onSelect(i) {
     onChecked(i);
     setChecked(i);
+    dispatch(updateResult({ trace, checked }));
   }
   if (isLoading) return <h3 className="text-light">isLoading</h3>;
   if (serverError)
@@ -41,10 +45,12 @@ export const Questions = ({ onChecked }) => {
             <label className="text-primary" htmlFor={`q${i}-option`}>
               {q}
             </label>
-            <div className="check "></div>
+            <div
+              className={`check ${result[trace] == i ? "checked" : ""}`}
+            ></div>
           </li>
         ))}
       </ul>
     </div>
   );
-}
+};
